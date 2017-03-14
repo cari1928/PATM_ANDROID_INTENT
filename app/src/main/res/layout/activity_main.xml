@@ -45,12 +45,41 @@
         android:id="@+id/btnAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/tvEmail"
+        android:text="Aceptar"
+        android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/tvEmail"
+        android:layout_alignStart="@+id/tvEmail"
+        android:layout_marginBottom="31dp"
         android:layout_alignRight="@+id/tvEmail"
+        android:layout_alignEnd="@+id/tvEmail" />
+
+    <Button
+        android:id="@+id/btnPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pause"
+        android:layout_alignBaseline="@+id/btnPlay"
+        android:layout_alignBottom="@+id/btnPlay"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvEmail"
         android:layout_alignStart="@+id/tvEmail"
         android:layout_below="@+id/tvEmail"
-        android:layout_marginTop="21dp"
-        android:text="Aceptar" />
+        android:layout_marginTop="13dp"
+        android:text="Play" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnPlay"
+        android:layout_alignBottom="@+id/btnPlay"
+        android:layout_alignEnd="@+id/tvEmail"
+        android:layout_alignRight="@+id/tvEmail"
+        android:text="Stop" />
 
 </RelativeLayout>

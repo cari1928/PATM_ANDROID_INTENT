@@ -1,6 +1,7 @@
 package com.example.radog.a2017_03_13_patm_verdatos;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -14,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tvNombre) TextView etNombre;
     @BindView(R.id.tvTelefono) TextView etTelefono;
     @BindView(R.id.tvEmail) TextView etEmail;
+
+    MediaPlayer objM;
+    private int pause;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(objI);
     }
 
+    @OnClick(R.id.btnPlay)
+    public void btnPlay() {
+
+        if(objM == null) {
+            //objM = MediaPlayer.create(this, R.raw.guren_no_yumiya_violin);
+            objM = MediaPlayer.create(this, R.raw.guren_no_yumiya);
+            objM.start();
+        } else if(!objM.isPlaying()) {
+            objM.seekTo(pause);
+            objM.start();
+        }
+    }
+
+    @OnClick(R.id.btnPause)
+    public void btnPause(){
+        objM.pause();
+        pause = objM.getCurrentPosition();
+    }
+
+    @OnClick(R.id.btnStop)
+    public void btnStop() {
+        objM.release();
+        objM = null;
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle datos) {
-        //enviar datos
+        //guardar datos
         datos.putString("NOM",  etNombre.getText().toString());
         datos.putString("TEL", etTelefono.getText().toString());
         datos.putString("EMA", etEmail.getText().toString());
@@ -46,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onRestoreInstanceState(Bundle datos) {
-        //datos guardados
+        //datos recuperados
          etNombre.setText(datos.getString("NOM"));
         etTelefono.setText(datos.getString("TEL"));
         etEmail.setText(datos.getString("EMA"));
